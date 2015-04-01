@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/spinner"
+        android:entries="@array/routes"
+        android:prompt="@string/choose_route"
+        android:layout_gravity="center_horizontal"
+        android:spinnerMode="dropdown"
+        android:clickable="false" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="435dp"
+            android:id="@+id/map"
+            tools:context=".MapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_weight="0.67" />
+
+        <Button
+            android:id="@+id/pickUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/pickUpButtonText"
+            android:textSize="35sp"
+            android:background="#008542"
+            android:textColor="#fff"
+            android:layout_weight="0.43" />
+
+    </LinearLayout>
+
+</LinearLayout>

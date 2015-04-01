@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CometRadar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="pickUpButtonText">Pick me up</string>
+    <string name="choose_route">University Village Phase 1</string>
+    <string-array name="routes">
+        <item>University Village Phase 1</item>
+        <item>University Commons</item>
+        <item>McDermott Library</item>
+        <item>Rutford Avenue North-South</item>
+    </string-array>
+</resources>
