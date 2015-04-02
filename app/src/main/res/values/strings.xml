@@ -4,7 +4,8 @@
     <string name="pickUpButtonText">Pick me up</string>
     <string name="choose_route">University Village Phase 1</string>
     <string-array name="routes">
-        <item>University Village Phase 1</item>
+        <item>University Village Phase 1 and 2</item>
+        <item>University Village Phase 5 and 6</item>
         <item>University Commons</item>
         <item>McDermott Library</item>
         <item>Rutford Avenue North-South</item>
