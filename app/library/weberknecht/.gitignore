@@ -1,0 +1,12 @@
+gen/
+bin/
+out/
+.DS_Store
+.swp
+.properties
+.classpath
+.idea/
+*.iml
+.project
+.settings
+target/

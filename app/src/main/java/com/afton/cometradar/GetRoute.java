@@ -3,7 +3,11 @@ package com.afton.cometradar;
 import android.graphics.Color;
 import android.os.AsyncTask;
 
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -66,13 +70,23 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
             // TODO: The String variable "ma.routeName" has the name of the route... use this to grab from DB //
             ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            double originLat = 32.9856748;
-            double originLong = -96.75524339999998;
-            double destinationLat = 32.9855582;
-            double destinationLong = -96.7499986;
-            double[] waypointsLat = {32.9837381, 32.9837774, 32.9855606, 32.9856448};
-            double[] waypointsLong = {-96.7544246, -96.75588640000001, -96.75002030000002, -96.74969579999998};
+            GetRouteSQL data = new GetRouteSQL();
+            data.getRouteData();
 
+            double originLat = Double.parseDouble(data.getOriginLat());
+            double originLong = Double.parseDouble(data.getOriginLong());
+            double destinationLat = Double.parseDouble(data.getDestLat());
+            double destinationLong = Double.parseDouble(data.getDestLong());
+            double[] waypointsLat = new double[data.getSize()];
+            double[] waypointsLong = new double[data.getSize()];
+
+            String[] temp = data.getWpLat();
+            String[] temp1 = data.getWpLong();
+
+            for(int i = 0 ; i < data.getSize() ; i++) {
+                waypointsLat[i] = Double.parseDouble(temp[i]);
+                waypointsLong[i] = Double.parseDouble(temp1[i]);
+            }
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,10 +97,13 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
                     + destinationLat + ","
                     + destinationLong + "&waypoints=";
 
+
             for (int i = 0; i < waypointsLat.length; i++)
                 url += waypointsLat[i] + "," + waypointsLong[i] + "|";
 
             url += "&sensor=false&key=AIzaSyB2T0ODhKgWpFWJEyBmDkaYqU0GNGm1HYE";
+
+            System.out.println("SWAG = " + url);
 
             return new URL(url);
 
@@ -118,10 +135,21 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
         }
 
+        ma.mMap.clear();
+        BitmapDescriptor mapOverlay = BitmapDescriptorFactory.fromResource(R.mipmap.mapoverlay); // campus map overlay
+
+        // Adds a ground overlay
+        LatLngBounds bounds = new LatLngBounds(new LatLng(32.976600, -96.761700), new LatLng(32.995650, -96.739400)); // get a bounds
+        ma.mMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(mapOverlay)
+                .positionFromBounds(bounds));
+
         ma.mMap.addPolyline(new PolylineOptions()
                 .addAll(poly)
                 .width(8)
                 .color(Color.BLUE));
+
+
     }
 
     private List<LatLng> decodePoly(String encoded) {

@@ -23,19 +23,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 public class MapsActivity extends FragmentActivity {
 
     public GoogleMap mMap;  // Might be null if Google Play services APK is not available.
+    public GoogleMap rMap;  // Map with the route displayed on it
     Spinner spinner;        // The spinner selector (UI element) for choosing a route
-    String routeName;       // The name of the selected route
+    public static String routeName;       // The name of the selected route
     LatLng cartLocation;    // Location of the cart
     LatLng userLocation;    // Location of user
     String eta = "";        // The ETA of the cart to the user
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         spinner = (Spinner)findViewById(R.id.spinner);
         routeName = spinner.getSelectedItem().toString();
+
         new GetRoute(MapsActivity.this).execute();
 
         setUpMapIfNeeded();
@@ -45,8 +45,18 @@ public class MapsActivity extends FragmentActivity {
         pickUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pickUpButton.getText().equals("Pick me up"))
+                if (pickUpButton.getText().equals("Pick me up")) {
                     pickUpButton.setText("Cancel Pickup");
+
+                    //Send to database
+                    double pickupLat = userLocation.latitude;
+                    double pickupLong = userLocation.longitude;
+
+                    //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
+                    new SetPickupSQL(pickupLat,pickupLong).execute();
+
+
+                }
                 else
                     pickUpButton.setText("Pick me up");
             }
@@ -196,6 +206,10 @@ public class MapsActivity extends FragmentActivity {
         return userLocation;
     }
 
+    public String getRouteName() {
+        System.out.println("the route name should be " + routeName);
+        return routeName;
+    }
 }
 
 
