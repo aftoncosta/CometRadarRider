@@ -53,7 +53,7 @@ public class MapsActivity extends FragmentActivity {
                     double pickupLong = userLocation.longitude;
 
                     //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
-                    new SetPickupSQL(pickupLat,pickupLong).execute();
+                    new connectServer(pickupLat,pickupLong,true).execute();
 
 
                 }

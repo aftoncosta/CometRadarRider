@@ -8,22 +8,33 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
-        double lat;
-        double lon;
+public class connectServer extends AsyncTask<Void, Void, String>  {
 
-    public SetPickupSQL(double a, double b) {
-        lat = a;
-        lon = b;
+    double pickupLat;
+    double pickupLong;
+    boolean isPickup = false;
+
+    public connectServer(double a, double b, boolean c){
+        pickupLat = a;
+        pickupLong = b;
+        isPickup = c;
     }
 
-
-    /*
-        Background task that runs to connect to database and get route data
-     */
     protected String doInBackground(Void... arg0) {
 
-        String temp = "INSERT INTO pickup_request (pickup_request.route_name, pickup_request.lat, pickup_request.long) VALUES ('" + MapsActivity.routeName + "', '" + lat + "', '" + lon + "');";
+        if(isPickup == true){
+            sendPickup();
+            isPickup = false;
+        }
+
+
+
+
+        return "";
+    }
+
+    public void sendPickup(){
+        String temp = "INSERT INTO pickup_request (pickup_request.route_name, pickup_request.lat, pickup_request.long) VALUES ('" + MapsActivity.routeName + "', '" + pickupLat + "', '" + pickupLong + "');";
         String query = temp.replace(" ", "%20");
 
         String url = "http://10.0.2.2:3001/sendPickup?string=" + query ;
@@ -57,8 +68,12 @@ public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return "";
     }
-}
 
+    public void getRoute(){
+
+
+    }
+
+}
 
