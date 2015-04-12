@@ -26,6 +26,8 @@ public class MapsActivity extends FragmentActivity {
     public GoogleMap rMap;  // Map with the route displayed on it
     Spinner spinner;        // The spinner selector (UI element) for choosing a route
     public static String routeName;       // The name of the selected route
+    public static boolean isOnDuty = false;
+    public static boolean isFull = false;
     LatLng cartLocation;    // Location of the cart
     LatLng userLocation;    // Location of user
     String eta = "";        // The ETA of the cart to the user
@@ -56,9 +58,9 @@ public class MapsActivity extends FragmentActivity {
 
                     //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
                     new connectServer(pickupLat,pickupLong,true).execute();
+                    System.out.println("GETTING ROUTE STATUS 0");
 
-                    System.out.println("STARTING UP THE GETROUTES");
-                    new getRouteStatus().execute();
+                    //new getRouteStatus().execute();
 
 
                 }
@@ -161,13 +163,14 @@ public class MapsActivity extends FragmentActivity {
         // TODO: The String variable "routeName" has the name of the route... use this to grab from DB //
         /////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //This method will take care of is shuttle is on duty, or if its full:
+        //Not sure if it updates when we change routes??
+         new getRouteStatus().execute();
 
-
-        //Look for route name in database, if it is there then we are on duty otherwise we are not
-        boolean isOnDuty = true; // is the cart on duty?
+         // is the cart on duty?
 
         //Get the current capacity, and if grater than or equal to max then we are full
-        boolean isFull = false;  // is the cart full?
+          // is the cart full?
 
         /////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////
