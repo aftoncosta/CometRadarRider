@@ -57,6 +57,9 @@ public class MapsActivity extends FragmentActivity {
                     //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
                     new connectServer(pickupLat,pickupLong,true).execute();
 
+                    System.out.println("STARTING UP THE GETROUTES");
+                    new getRouteStatus().execute();
+
 
                 }
                 else
@@ -158,7 +161,12 @@ public class MapsActivity extends FragmentActivity {
         // TODO: The String variable "routeName" has the name of the route... use this to grab from DB //
         /////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+        //Look for route name in database, if it is there then we are on duty otherwise we are not
         boolean isOnDuty = true; // is the cart on duty?
+
+        //Get the current capacity, and if grater than or equal to max then we are full
         boolean isFull = false;  // is the cart full?
 
         /////////////////////////////////////////////////////////////////////////////////////////////////

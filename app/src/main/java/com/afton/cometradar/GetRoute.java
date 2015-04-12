@@ -92,8 +92,8 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
                 waypointsLat[i] = Double.parseDouble(temp[i]);
                 waypointsLong[i] = Double.parseDouble(temp1[i]);
 
-                System.out.println("WAYPOINTS LAT: " + waypointsLat[i]);
-                System.out.println("WAYPOINTS LON: " + waypointsLong[i]);
+              //  System.out.println("WAYPOINTS LAT: " + waypointsLat[i]);
+              //  System.out.println("WAYPOINTS LON: " + waypointsLong[i]);
 
             }
 

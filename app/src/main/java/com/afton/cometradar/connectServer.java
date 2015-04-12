@@ -70,10 +70,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
         }
     }
 
-    public void getRoute(){
-
-
-    }
 
 }
 
