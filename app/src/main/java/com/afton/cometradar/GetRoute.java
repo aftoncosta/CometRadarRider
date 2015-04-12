@@ -36,11 +36,6 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... arg0) {
         URL url = null;
-        System.out.println("SPINNER SHIT");
-
-        getSpinnerName test = new getSpinnerName();
-        test.getRoutes();
-
         try {
             url = getURL();
 
