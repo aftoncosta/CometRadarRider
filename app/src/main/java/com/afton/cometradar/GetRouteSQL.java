@@ -25,15 +25,14 @@ public class GetRouteSQL {
     String userName = "bsxpccom_user2";
     String password = "5Q$gP7jfxeO4";
 
-    int dataSize = 4;
-   // int dataSize = getWaypointSize();
-    Integer[] order =  new Integer[dataSize];
+    int dataSize;
+    Integer[] order;
     String originLat;
     String originLong;
     String destLat;
     String destLong;
-    String[] wpLat = new String[dataSize];
-    String[] wpLong = new String[dataSize];
+    String[] wpLat;
+    String[] wpLong;
 
     public void getRouteData() {
 
@@ -46,7 +45,7 @@ System.out.println("EAR: " + MapsActivity.routeName);
 
         String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3001/sendPickup?string=" + query ;
+        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);
@@ -70,123 +69,118 @@ System.out.println("EAR: " + MapsActivity.routeName);
             }
             in.close();
 
-
             //print result
             String answer = response.toString();
             System.out.println("RESPONSE FROM SERVER: " + answer);
-            System.out.println("RUNNNNNNNNNNNNNNNING-1");
-
             parseData(answer);
-
-            System.out.println("RUNNNNNNNNNNNNNNNING-2");
 
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        /*try {
-
-            System.out.println("CONNECTING TO DATABASE TO GET ROUTE DATA");
-            Class.forName(driver).newInstance();
-            Connection conn = DriverManager.getConnection(url+dbName,userName,password);
-
-            //String query = "SELECT SUM(paypal_fee) FROM shopifyorders JOIN paypalfees ON paypal_id=payment_id WHERE sale_date BETWEEN \"" +date1+"\" AND \""+date2+"\"";
-            String query = "SELECT  W.order,R.originLat, R.originLong, R.destLat, R.destLong, W.wp_lat, W.wp_long FROM routes AS R JOIN route_waypoints AS W WHERE R.route_name = \"" +MapsActivity.routeName+"\" AND R.route_name=W.route_name ORDER BY W.order";
-
-            System.out.println("QUERY= " + query);
-            // create the java statement
-            Statement st = conn.createStatement();
-
-            // execute the query, and get a java resultset
-            ResultSet rs = st.executeQuery(query);
-
-            int i = 0;
-            // iterate through the java resultset
-            while (rs.next())
-            {
-                order[i] = rs.getInt("order");
-                originLat = rs.getString("originLat");
-                originLong = rs.getString("originLong");
-                destLat = rs.getString("destLat");
-                destLong = rs.getString("destLong");
-                wpLat[i] = rs.getString("wp_lat");
-                wpLong[i] = rs.getString("wp_long");
-
-                i++;
-
-            }
-
-            System.out.println("Closing Connection for route data");
-
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
 
     }
 
     public void parseData(String data)throws Exception{
-//        JSONArray parse =  new JSONArray(data);
-//        System.out.println("parse = " + parse.get(0));
-//
-//System.out.println("size is = "+ parse.length());
 
-        JSONObject obj = new JSONObject(data);
+        JSONArray array = new JSONArray(data);
 
-        List<String> list = new ArrayList<String>();
-        JSONArray array = obj.getJSONArray("order");
+        int dataSize = array.length();
+        Integer[] order =  new Integer[dataSize];
+        String originLat;
+        String originLong;
+        String destLat;
+        String destLong;
+        String[] wpLat = new String[dataSize];
+        String[] wpLong = new String[dataSize];
+
+        List<String> order_json = new ArrayList<String>();
+        List<String> originLat_json = new ArrayList<String>();
+        List<String> originLong_json = new ArrayList<String>();
+        List<String> destLat_json = new ArrayList<String>();
+        List<String> destLong_json = new ArrayList<String>();
+        List<String> wpLat_json = new ArrayList<String>();
+        List<String> wpLong_json = new ArrayList<String>();
+
+
+
         for(int i = 0 ; i < array.length() ; i++){
-            list.add(array.getJSONObject(i).getString("order"));
-            System.out.println("Size = " + array.length());
+            order_json.add(array.getJSONObject(i).getString("order"));
+            originLat_json.add(array.getJSONObject(i).getString("originLat"));
+            originLong_json.add(array.getJSONObject(i).getString("originLong"));
+            destLat_json.add(array.getJSONObject(i).getString("destLat"));
+            destLong_json.add(array.getJSONObject(i).getString("destLong"));
+            wpLat_json.add(array.getJSONObject(i).getString("wp_lat"));
+            wpLong_json.add(array.getJSONObject(i).getString("wp_long"));
+
+            //order
+            order[i] = Integer.parseInt(order_json.get(i));
+
+            //wp_lat
+            wpLat[i] = wpLat_json.get(i);
+
+            //wp_long
+            wpLong[i] = wpLong_json.get(i);
         }
 
-    }
-    public int getWaypointSize() {
+        //originLat
+        originLat = originLat_json.get(0);
 
-        int size = 0;
-        try {
+        //originLong
+        originLong = originLong_json.get(0);
 
-            System.out.println("CONNECTING TO DATABASE TO GET SIZE");
-            Class.forName(driver).newInstance();
-            Connection conn = DriverManager.getConnection(url+dbName,userName,password);
+        //destLat
+        destLat = destLat_json.get(0);
 
-            String query = "SELECT  W.order,R.originLat, R.originLong, R.destLat, R.destLong, W.wp_lat, W.wp_long FROM routes AS R JOIN route_waypoints AS W WHERE R.route_name = \"" +MapsActivity.routeName+"\" AND R.route_name=W.route_name ORDER BY W.order";
+        //destLong
+        destLong = destLong_json.get(0);
 
-            // create the java statement
-            Statement st = conn.createStatement();
+        setOriginLat(originLat);
+        setOriginLong(originLong);
+        setDestLat(destLat);
+        setDestLong(destLong);
+        setWpLat(wpLat);
+        setWpLong(wpLong);
+        setSize(dataSize);
 
-            // execute the query, and get a java resultset
-            ResultSet rs = st.executeQuery(query);
-
-            // iterate through the java resultset
-            while (rs.next())
-            {
-                size++;
-            }
-
-            System.out.println("Closing Connection for size");
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return size;
     }
 
-	/*
-	 * 	Integer[] order =  new Integer[dataSize];
-	String originLat;
-	String originLong;
-	String destLat;
-	String destLong;
-	String[] wpLat = new String[dataSize];
-	String[] wpLong = new String[dataSize];
-	 *
-	 */
 
-    public Integer[] getOrder(){
-        return order;
+    public void setOriginLat(String a){
+        originLat = a;
     }
+
+    public void setOriginLong(String a){
+        originLong = a;
+    }
+
+    public void setDestLat(String a){
+        destLat = a;
+    }
+
+    public void setDestLong(String a){
+        destLong = a;
+    }
+
+    public void setWpLat(String[] a){
+         wpLat = new String[a.length];
+         for(int i = 0 ; i < a.length ; i ++) {
+             wpLat[i] = a[i];
+         }
+    }
+
+    public void setWpLong(String[] a){
+        wpLong = new String[a.length];
+        for(int i = 0 ; i < a.length ; i ++)
+            wpLong[i] = a[i];
+    }
+
+    public void setSize(int a){
+        dataSize = a;
+    }
+
+
+    //GET
 
     public String getOriginLat(){
         return originLat;

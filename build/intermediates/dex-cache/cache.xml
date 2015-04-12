@@ -16,39 +16,11 @@
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-01375b3c61739a3a4a502474e2e0cff328fa4b52.jar" />
     </item>
     <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-ceb16f46ce5c3993b3e3700eccd4853bff497f87.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-79f0098b3cade580f541156e778a35eef76c564a.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-48df984fe19a3c7a8296f187ff345d1885ede2d2.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-464573b9daa81a5838fea8b48670526be2d5a55b.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-fc0014575cd56724c0d9903733a521696ce2d682.jar" />
     </item>
     <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
@@ -65,25 +37,11 @@
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-6d425413046093e89be03979b2b8e77e51a9e267.jar" />
     </item>
     <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-6e27debca1618e8ea7c75f1fd610a827a704fb03.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-134ab84a3e39d0975152bbc64368f135a4301b06.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-2b6da8db1c4a67fee9e6e1a9a8cebdb64dba3d8a.jar" />
     </item>
     <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
@@ -93,32 +51,11 @@
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-cca847e19ff8f0d9df0b45c95bde044d84420c33.jar" />
     </item>
     <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-cebfa0c7643da9269bc56b3149df17fea85ae2be.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-c7a8ccdfe187effc175438f079346a03199fffca.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-6671436e59ad917f9756b0fad2ef61924a6ff46d.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/libs/mysql-connector-java-5.1.35-bin.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="755b22641acc4e6f2b9e449cdef0108274450ca4">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/mysql-connector-java-5.1.35-bin-32557305c45fab80a7a27cdf764d126b764eac3c.jar" />
     </item>
     <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
@@ -135,39 +72,11 @@
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-3cec08ec71011eaa6c0c888a09d5685eb23414fb.jar" />
     </item>
     <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-c998de000f338017de1e366f09a8b45775c7e392.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-43d5399978fe3cad6629bc456d3f302a81f2f141.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-2031a0080dc605eeeb14c9ad1ba97786b54b1ed3.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-a52acaf05ed8dd107e08aa4694cf9bb43bbf9a6f.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-0a6539781ea66f226d73a0940acbcc103ddfc8cd.jar" />
     </item>
     <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
@@ -184,67 +93,11 @@
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-2ea58c8091296e457430748d6af9fa1564dae676.jar" />
     </item>
     <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-732ef3dca9eb6d142cb35015791b161dde72f3c8.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-2b8f70382d4a9c6108d65f5687408688674dd3ed.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-ebae2a2d3263bd7172a79307726ce60cc4242ed1.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-dbde4079f210812bee4d3641b1fb2e21f8b14a6c.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-5c80aeec11ac2d564999546b2ff6fcea889935cc.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-ea88f2fdadbf996a0259ef217969c9199cfaa654.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-be660f6030390ffdab0dc21b5a0edc9644f5dfbd.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-150f54b387ae736dcd5290a927ccf026b9ea1c8f.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-349437245acaeefb3667b5cd90d556b330d99aa1.jar" />
     </item>
     <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
@@ -289,6 +142,167 @@
         <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/mysql-connector-java-5.1.35-bin-813e37e79e0098fec13cac44049d6b93f8ab97af.jar" />
     </item>
     <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-4a72b3691c74f897bf74d1aee95eda5ef92fa5a6.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-1c346bad49c9f694bedc832cf6660f44ddb7a814.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-ceb16f46ce5c3993b3e3700eccd4853bff497f87.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-79f0098b3cade580f541156e778a35eef76c564a.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-464573b9daa81a5838fea8b48670526be2d5a55b.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-fc0014575cd56724c0d9903733a521696ce2d682.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-6e27debca1618e8ea7c75f1fd610a827a704fb03.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-2b6da8db1c4a67fee9e6e1a9a8cebdb64dba3d8a.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-cebfa0c7643da9269bc56b3149df17fea85ae2be.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-c7a8ccdfe187effc175438f079346a03199fffca.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/libs/mysql-connector-java-5.1.35-bin.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="755b22641acc4e6f2b9e449cdef0108274450ca4">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/mysql-connector-java-5.1.35-bin-32557305c45fab80a7a27cdf764d126b764eac3c.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-c998de000f338017de1e366f09a8b45775c7e392.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-2031a0080dc605eeeb14c9ad1ba97786b54b1ed3.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-a52acaf05ed8dd107e08aa4694cf9bb43bbf9a6f.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-0a6539781ea66f226d73a0940acbcc103ddfc8cd.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-732ef3dca9eb6d142cb35015791b161dde72f3c8.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-2b8f70382d4a9c6108d65f5687408688674dd3ed.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-ebae2a2d3263bd7172a79307726ce60cc4242ed1.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-dbde4079f210812bee4d3641b1fb2e21f8b14a6c.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-5c80aeec11ac2d564999546b2ff6fcea889935cc.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-be660f6030390ffdab0dc21b5a0edc9644f5dfbd.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-150f54b387ae736dcd5290a927ccf026b9ea1c8f.jar" />
+    </item>
+    <item
+        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-349437245acaeefb3667b5cd90d556b330d99aa1.jar" />
+    </item>
+    <item
         jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -310,25 +324,11 @@
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-1c117ee076c6c70652947d997bc448a9f4a44857.jar" />
     </item>
     <item
-        jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
-        <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-4a72b3691c74f897bf74d1aee95eda5ef92fa5a6.jar" />
-    </item>
-    <item
         jar="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
         <dex dex="/Users/newuser/Desktop/CometRadarRider/app/build/intermediates/pre-dexed/debug/classes-2426ce56864ce7ba0f0c7a242a30a0b7586600e6.jar" />
-    </item>
-    <item
-        jar="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
-        <dex dex="/Users/newuser/Downloads/CometRadarRider-master/app/build/intermediates/pre-dexed/debug/classes-1c346bad49c9f694bedc832cf6660f44ddb7a814.jar" />
     </item>
 
 </items>

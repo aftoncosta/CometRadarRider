@@ -36,9 +36,11 @@ public class MapsActivity extends FragmentActivity {
         spinner = (Spinner)findViewById(R.id.spinner);
         routeName = spinner.getSelectedItem().toString();
 
+
         new GetRoute(MapsActivity.this).execute();
 
         setUpMapIfNeeded();
+
 
         // Handler for pickup request
         final Button pickUpButton = (Button) findViewById(R.id.pickUpButton);
@@ -188,7 +190,7 @@ public class MapsActivity extends FragmentActivity {
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////// DATA TO BE SENT TO DB /////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////// TODO: store "userLocation" as the driver's location for the route "routeName" ///////////
+        //////////// TODO: store "userLocation" as the rider's location for the route "routeName" ////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // updates current user location marker
