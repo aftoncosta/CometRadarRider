@@ -36,7 +36,7 @@ public class GetRouteSQL {
 
     public void getRouteData() {
 
-System.out.println("EAR: " + MapsActivity.routeName);
+//System.out.println("EAR: " + MapsActivity.routeName);
 
         String temp = "SELECT  W.order,R.originLat, R.originLong, R.destLat, " +
                         "R.destLong, W.wp_lat, W.wp_long FROM routes AS R JOIN " +
@@ -49,15 +49,15 @@ System.out.println("EAR: " + MapsActivity.routeName);
 
         try {
             URL obj = new URL(url);
-            System.out.println("url swag: " + obj.toString());
+            //System.out.println("url swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                System.out.println("CLOSE");
+                //System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
 
-            System.out.println("\nSending 'GET' request to URL : " + url);
+            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -71,7 +71,8 @@ System.out.println("EAR: " + MapsActivity.routeName);
 
             //print result
             String answer = response.toString();
-            System.out.println("RESPONSE FROM SERVER: " + answer);
+            //System.out.println("RESPONSE FROM SERVER: " + answer);
+            //System.out.println("RESPONSE FROM SERVER: " + answer);
             parseData(answer);
 
         }catch(Exception e){

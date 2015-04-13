@@ -1,6 +1,7 @@
 package com.afton.cometradar;
 
 import android.os.AsyncTask;
+import android.os.Build;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -9,7 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -61,7 +65,7 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
             // TODO: The String variable "ma.routeName" has the name of the route. Use this to grab from DB //
             //////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ma.cartLocation = new LatLng(32.9855582, -96.7499986);
+            ma.cartLocation = getCartLocation();//new LatLng(32.9855582, -96.7499986);
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,5 +104,49 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    protected LatLng getCartLocation(){
+        LatLng location = ma.cartLocation;
+
+        String temp = "SELECT currentLat, currentLong FROM bsxpccom_cometradar.current_route WHERE route_name = '" + ma.routeName + "';";
+
+        String query = temp.replace(" ", "%20");
+
+        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+
+        try {
+            URL obj = new URL(url);
+            //System.out.println("url swag: " + obj.toString());
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
+                //System.out.println("CLOSE");
+                con.setRequestProperty("Connection", "close");
+            }
+            con.setRequestMethod("GET");
+
+            //System.out.println("\nSending 'GET' request to URL : " + url);
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            //print result
+            String answer = response.toString();
+            System.out.println("RESPONSE FROM SERVER: " + answer);
+            //System.out.println("RESPONSE FROM SERVER: " + answer);
+            //parseData(answer);
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return location;
     }
 }

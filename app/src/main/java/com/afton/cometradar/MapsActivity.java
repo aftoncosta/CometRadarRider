@@ -23,7 +23,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 public class MapsActivity extends FragmentActivity {
 
     public GoogleMap mMap;  // Might be null if Google Play services APK is not available.
-    public GoogleMap rMap;  // Map with the route displayed on it
     Spinner spinner;        // The spinner selector (UI element) for choosing a route
     public static String routeName;       // The name of the selected route
     public static boolean isOnDuty = false;
@@ -38,7 +37,6 @@ public class MapsActivity extends FragmentActivity {
         spinner = (Spinner)findViewById(R.id.spinner);
         routeName = spinner.getSelectedItem().toString();
 
-
         new GetRoute(MapsActivity.this).execute();
 
         setUpMapIfNeeded();
@@ -49,23 +47,23 @@ public class MapsActivity extends FragmentActivity {
         pickUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pickUpButton.getText().equals("Pick me up")) {
-                    pickUpButton.setText("Cancel Pickup");
+            if (pickUpButton.getText().equals("Pick me up")) {
+                pickUpButton.setText("Cancel Pickup");
 
-                    //Send to database
-                    double pickupLat = userLocation.latitude;
-                    double pickupLong = userLocation.longitude;
+                //Send to database
+                double pickupLat = userLocation.latitude;
+                double pickupLong = userLocation.longitude;
 
-                    //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
-                    new connectServer(pickupLat,pickupLong,true).execute();
-                    System.out.println("GETTING ROUTE STATUS 0");
+                //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
+                new connectServer(pickupLat,pickupLong,true).execute();
+                //System.out.println("GETTING ROUTE STATUS 0");
 
-                    //new getRouteStatus().execute();
+                //new getRouteStatus().execute();
 
 
-                }
-                else
-                    pickUpButton.setText("Pick me up");
+            }
+            else
+                pickUpButton.setText("Pick me up");
             }
         });
 
@@ -216,6 +214,7 @@ public class MapsActivity extends FragmentActivity {
                 .title(cartStatus)
                 .icon(cartImage));
 
+        System.out.println("CART LOCATION: " + cartLocation.latitude + ", " + cartLocation.longitude);
         return userLocation;
     }
 
