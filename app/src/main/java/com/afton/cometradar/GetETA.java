@@ -21,6 +21,7 @@ import java.net.URL;
 public class GetETA extends AsyncTask<Void, Void, Void>{
     String jsonString = "";
     MapsActivity ma;
+    String ip = "104.197.3.201";
 
     public GetETA(MapsActivity mAct) {
         super();
@@ -29,12 +30,13 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
     @Override
     protected Void doInBackground(Void... params) {
-        URL url = null;
+
+        URL urlD = null;
 
         try {
-            url = getURL();
+            urlD = getURL();
 
-            BufferedInputStream bis = new BufferedInputStream(url.openStream());
+            BufferedInputStream bis = new BufferedInputStream(urlD.openStream());
             byte[] buffer = new byte[1024];
             StringBuilder sb = new StringBuilder();
             int bytesRead = 0;
@@ -110,17 +112,16 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
         LatLng location = ma.cartLocation;
 
         String temp = "SELECT currentLat, currentLong FROM bsxpccom_cometradar.current_route WHERE route_name = '" + ma.routeName + "';";
-
         String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+        String url = "http://" + ip + ":3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);
-            //System.out.println("url swag: " + obj.toString());
+            System.out.println("url eta swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                //System.out.println("CLOSE");
+                System.out.println("eta CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
@@ -139,10 +140,15 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
             //print result
             String answer = response.toString();
-            System.out.println("RESPONSE FROM SERVER: " + answer);
+            JSONArray jsonA = new JSONArray(answer);
+            System.out.println(jsonA.toString());
+            JSONObject jsonO = jsonA.getJSONObject(0);
+            System.out.println(jsonO.toString());
+
+            System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("currentLat"));
             //System.out.println("RESPONSE FROM SERVER: " + answer);
             //parseData(answer);
-
+            location = new LatLng(Double.parseDouble(jsonO.getString("currentLat")), Double.parseDouble(jsonO.getString("currentLong")));
 
         }catch(Exception e){
             e.printStackTrace();

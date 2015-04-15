@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.location.Location;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
@@ -18,26 +19,45 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import java.util.List;
+import java.util.Arrays;
 
 
 public class MapsActivity extends FragmentActivity {
 
     public GoogleMap mMap;  // Might be null if Google Play services APK is not available.
     Spinner spinner;        // The spinner selector (UI element) for choosing a route
-    public static String routeName;       // The name of the selected route
+    public static String routeName = "";       // The name of the selected route
     public static boolean isOnDuty = false;
     public static boolean isFull = false;
     LatLng cartLocation;    // Location of the cart
     LatLng userLocation;    // Location of user
     String eta = "";        // The ETA of the cart to the user
+    List <String> routeNames;
+    protected ArrayAdapter<CharSequence> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         spinner = (Spinner)findViewById(R.id.spinner);
-        routeName = spinner.getSelectedItem().toString();
 
-        new GetRoute(MapsActivity.this).execute();
+
+        //new GetRouteNames(MapsActivity.this).execute();
+        adapter = ArrayAdapter.createFromResource(this, R.array.routes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //ArrayAdapter adapter = new ArrayAdapter<String>(this, spinner, new ArrayList(Arrays.asList(routeNames)));
+        //spinner.setAdapter(adapter);
+
+        new GetRouteNames(MapsActivity.this).execute();
+
+        //System.out.println("ROUTENAME 0: " + routeNames[0]);
+        //for (String route : routeNames)
+            //adapter.add(route);
+
+       // spinner.setAdapter(adapter);
+        //routeName = routeNames[0];
+        //new GetRoute(MapsActivity.this).execute();
 
         setUpMapIfNeeded();
 
@@ -73,6 +93,7 @@ public class MapsActivity extends FragmentActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 routeName = spinner.getSelectedItem().toString();
                 new GetRoute(MapsActivity.this).execute();
+                //new GetETA(MapsActivity.this).execute();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {

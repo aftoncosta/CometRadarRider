@@ -12,7 +12,7 @@
         android:prompt="@string/choose_route"
         android:layout_gravity="center_horizontal"
         android:spinnerMode="dropdown"
-        android:clickable="false" />
+        android:clickable="true" />
 
     <LinearLayout
         android:orientation="vertical"

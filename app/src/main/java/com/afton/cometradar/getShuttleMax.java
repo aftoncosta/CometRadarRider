@@ -15,6 +15,7 @@ public class getShuttleMax {
 
     String shuttle;
     int shuttleMax;
+    String ip = "104.197.3.201";
 
     public getShuttleMax(String a){
         shuttle = a;
@@ -25,7 +26,7 @@ public class getShuttleMax {
         String temp = "SELECT max FROM shuttle WHERE shuttle=" + shuttle;
         String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+        String url = "http://" + ip + ":3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);

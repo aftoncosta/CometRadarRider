@@ -17,11 +17,12 @@ public class getRouteServer {
     String shuttle;
     int capacity;
     boolean duty;
+    String ip = "104.197.3.201";
 
 
     public void getRouteData(){
 
-        String url = "http://10.0.2.2:3000/route-data";
+        String url = "http://" + ip + ":3000/route-data";
 
         try {
             URL obj = new URL(url);

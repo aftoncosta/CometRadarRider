@@ -15,13 +15,16 @@ public class UpdateLocationsThread extends Thread{
             and quickly used up my Google Directions API daily quota (2,500 calls)... so yeah.
 */
 
-        /*while(true){
+        while(true){
+            while (ma.routeName.equals("")){
+                System.out.println("wait");
+            }
             new GetETA(ma).execute();
             try {
                 this.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
     }
 }

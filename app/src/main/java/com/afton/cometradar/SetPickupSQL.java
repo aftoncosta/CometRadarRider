@@ -9,8 +9,9 @@ import java.net.URL;
 
 
 public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
-        double lat;
-        double lon;
+        double lat = 0;
+        double lon = 0;
+        String ip= "104.197.3.201";
 
     public SetPickupSQL(double a, double b) {
         lat = a;
@@ -26,7 +27,7 @@ public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
         String temp = "INSERT INTO pickup_request (pickup_request.route_name, pickup_request.lat, pickup_request.long) VALUES ('" + MapsActivity.routeName + "', '" + lat + "', '" + lon + "');";
         String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+        String url = "http://" + ip + ":3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);

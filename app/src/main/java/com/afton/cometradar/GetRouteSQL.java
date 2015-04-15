@@ -25,18 +25,19 @@ public class GetRouteSQL {
     String userName = "bsxpccom_user2";
     String password = "5Q$gP7jfxeO4";
 
-    int dataSize;
+    int dataSize = 0;
     Integer[] order;
-    String originLat;
-    String originLong;
-    String destLat;
-    String destLong;
+    String originLat = "";
+    String originLong = "";
+    String destLat = "";
+    String destLong = "";
     String[] wpLat;
     String[] wpLong;
+    String ip = "104.197.3.201";
 
     public void getRouteData() {
 
-//System.out.println("EAR: " + MapsActivity.routeName);
+System.out.println("EAR: " + MapsActivity.routeName);
 
         String temp = "SELECT  W.order,R.originLat, R.originLong, R.destLat, " +
                         "R.destLong, W.wp_lat, W.wp_long FROM routes AS R JOIN " +
@@ -45,19 +46,19 @@ public class GetRouteSQL {
 
         String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+        String url = "http://" + ip + ":3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);
-            //System.out.println("url swag: " + obj.toString());
+            System.out.println("url swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                //System.out.println("CLOSE");
+                System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
 
-            //System.out.println("\nSending 'GET' request to URL : " + url);
+            System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -71,7 +72,7 @@ public class GetRouteSQL {
 
             //print result
             String answer = response.toString();
-            //System.out.println("RESPONSE FROM SERVER: " + answer);
+            System.out.println("RESPONSE FROM SERVER: " + answer);
             //System.out.println("RESPONSE FROM SERVER: " + answer);
             parseData(answer);
 
