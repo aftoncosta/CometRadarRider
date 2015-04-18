@@ -89,9 +89,9 @@ public class GetRouteNames extends AsyncTask<Void, Void, Void> {
         }catch (Exception e){
             e.printStackTrace();
         }
-        ma.spinner.setAdapter(ma.adapter);
-        ma.spinner.setSelection(0);
-        ma.routeNames = routeNames;
-        ma.routeName = routeNames.get(0);
+        //ma.spinner.setAdapter(ma.adapter);
+        //ma.spinner.setSelection(0);
+        //ma.routeNames = routeNames;
+        //ma.routeName = routeNames.get(0);
     }
 }

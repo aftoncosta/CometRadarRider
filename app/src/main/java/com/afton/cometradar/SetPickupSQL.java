@@ -27,7 +27,7 @@ public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
         String temp = "INSERT INTO pickup_request (pickup_request.route_name, pickup_request.lat, pickup_request.long) VALUES ('" + MapsActivity.routeName + "', '" + lat + "', '" + lon + "');";
         String query = temp.replace(" ", "%20");
 
-        String url = "http://" + ip + ":3000/doQuery?string=" + query ;
+        String url = "http://" + ip + ":3000/pickup?route=" + MapsActivity.routeName + "&lat=" + lat + "&long=" + lon;
 
         try {
             URL obj = new URL(url);

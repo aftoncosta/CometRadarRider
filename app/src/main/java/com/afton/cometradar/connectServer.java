@@ -34,10 +34,9 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
     }
 
     public void sendPickup(){
-        String temp = "INSERT INTO pickup_request (pickup_request.route_name, pickup_request.lat, pickup_request.long) VALUES ('" + MapsActivity.routeName + "', '" + pickupLat + "', '" + pickupLong + "');";
-        String query = temp.replace(" ", "%20");
 
-        String url = "http://10.0.2.2:3000/doQuery?string=" + query ;
+        String url = "http://10.0.2.2:3000/pickup?route=" + MapsActivity.routeName + "&lat=" + pickupLat + "&long=" + pickupLong;
+        url = url.replace(" ", "%20");
 
         try {
             URL obj = new URL(url);
@@ -61,9 +60,9 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             }
             in.close();
 
-
+            int ind1 = response.toString().indexOf("<div id=\"id\">");
             //print result
-            System.out.println("RESPONSE FROM SERVER: " + response.toString());
+            System.out.println("RESPONSE FROM SERVER: " + response.toString().substring(ind1 + 13, response.toString().length()-6));
 
         }catch(Exception e){
             e.printStackTrace();

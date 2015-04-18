@@ -16,9 +16,9 @@ public class UpdateLocationsThread extends Thread{
 */
 
         while(true){
-            while (ma.routeName.equals("")){
+            /*while (ma.routeName.equals("")){
                 System.out.println("wait");
-            }
+            }*/
             new GetETA(ma).execute();
             try {
                 this.sleep(5000);
