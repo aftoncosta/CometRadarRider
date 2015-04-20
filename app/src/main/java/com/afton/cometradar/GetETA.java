@@ -51,6 +51,9 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        catch (NullPointerException e1){
+            e1.printStackTrace();
+        }
         return null;
     }
 
@@ -59,7 +62,13 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
             double originLat = ma.userLocation.latitude;
             double originLong = ma.userLocation.longitude;
-            ma.routeName = ma.spinner.getSelectedItem().toString();
+            //System.out.println("ROUTE NAME IS " + ma.spinner.getSelectedItem());
+
+            if(ma.spinner.getSelectedItem() != null) {
+                System.out.println("Filalfel");
+                ma.routeName = ma.spinner.getSelectedItem().toString();
+            }
+            //ma.routeName = "University Village Phase 5 and 6";
 
             //////////////////////////////////////////////////////////////////////////////////////////////////
             ///////////////////////////////// DATA TO BE GRABBED FROM DB /////////////////////////////////////
@@ -82,6 +91,9 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+        }
+        catch (NullPointerException e1) {
+            e1.printStackTrace();
         }
         return null;
     }
