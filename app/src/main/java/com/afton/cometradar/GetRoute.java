@@ -72,7 +72,7 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
             GetRouteSQL data = new GetRouteSQL();
             data.getRouteData();
 
-            System.out.println("DIS BOY" + data.getOriginLat());
+            //System.out.println("DIS BOY" + data.getOriginLat());
             double originLat = Double.parseDouble(data.getOriginLat());
             double originLong = Double.parseDouble(data.getOriginLong());
             double destinationLat = Double.parseDouble(data.getDestLat());
@@ -87,7 +87,7 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
                     temp1 = data.getWpLong();
 
 
-            System.out.println("DATA SIZE" + data.getSize());
+            //System.out.println("DATA SIZE" + data.getSize());
             for(int i = 0 ; i < data.getSize() ; i++) {
                 waypointsLat[i] = Double.parseDouble(temp[i]);
                 waypointsLong[i] = Double.parseDouble(temp1[i]);
@@ -97,7 +97,7 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
 
             }
 
-            System.out.println("ALl data assigned");
+            //System.out.println("ALl data assigned");
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
 
             url += "&sensor=false&key=AIzaSyB2T0ODhKgWpFWJEyBmDkaYqU0GNGm1HYE";
 
-            System.out.println("SWAG = " + url);
+            //System.out.println("SWAG = " + url);
 
             return new URL(url);
 

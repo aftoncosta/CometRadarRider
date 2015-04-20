@@ -59,6 +59,7 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
     private URL getURL(){
         try {
+<<<<<<< HEAD
 
             double originLat = ma.userLocation.latitude;
             double originLong = ma.userLocation.longitude;
@@ -70,6 +71,19 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
             }
             //ma.routeName = "University Village Phase 5 and 6";
 
+=======
+            double originLat;
+            double originLong;
+
+            if (ma.pickupLocation != null){
+                originLat = ma.pickupLocation.latitude;
+                originLong = ma.pickupLocation.longitude;
+            } else {
+                originLat = ma.userLocation.latitude;
+                originLong = ma.userLocation.longitude;
+                ma.routeName = ma.spinner.getSelectedItem().toString();
+            }
+>>>>>>> origin/master
             //////////////////////////////////////////////////////////////////////////////////////////////////
             ///////////////////////////////// DATA TO BE GRABBED FROM DB /////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,10 +144,10 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
         try {
             URL obj = new URL(url);
-            System.out.println("url eta swag: " + obj.toString());
+            //System.out.println("url eta swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                System.out.println("eta CLOSE");
+                //System.out.println("eta CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
@@ -153,11 +167,11 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
             //print result
             String answer = response.toString();
             JSONArray jsonA = new JSONArray(answer);
-            System.out.println(jsonA.toString());
+            //System.out.println(jsonA.toString());
             JSONObject jsonO = jsonA.getJSONObject(0);
-            System.out.println(jsonO.toString());
+            //System.out.println(jsonO.toString());
 
-            System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("currentLat"));
+            //System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("currentLat"));
             //System.out.println("RESPONSE FROM SERVER: " + answer);
             //parseData(answer);
             location = new LatLng(Double.parseDouble(jsonO.getString("currentLat")), Double.parseDouble(jsonO.getString("currentLong")));

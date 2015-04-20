@@ -37,15 +37,15 @@ public class GetRouteNames extends AsyncTask<Void, Void, Void> {
 
         try {
             URL obj = new URL(url);
-            System.out.println("url swag: " + obj.toString());
+            //System.out.println("url swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                System.out.println("CLOSE");
+                //System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
 
-            System.out.println("\nSending 'GET' request to URL : " + url);
+            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -59,15 +59,15 @@ public class GetRouteNames extends AsyncTask<Void, Void, Void> {
 
 
             //print result
-            System.out.println("ROUTE NAMES: " + response.toString());
+            //System.out.println("ROUTE NAMES: " + response.toString());
 
             String answer = response.toString();
             jsonA = new JSONArray(answer);
-            System.out.println(jsonA.toString());
+            //System.out.println(jsonA.toString());
             jsonO = jsonA.getJSONObject(0);
-            System.out.println(jsonO.toString());
+            //System.out.println(jsonO.toString());
 
-            System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("route_name"));
+            //System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("route_name"));
 
             //ArrayAdapter adapter = new ArrayAdapter<String>(this, ma.spinner, array);
 
@@ -82,7 +82,7 @@ public class GetRouteNames extends AsyncTask<Void, Void, Void> {
         List<String> routeNames = new ArrayList();
         try {
             for (int i = 0; i < jsonA.length(); i++){
-                System.out.println(jsonA.length() + " JSONA: " + jsonA.getJSONObject(i).getString("route_name"));
+                //System.out.println(jsonA.length() + " JSONA: " + jsonA.getJSONObject(i).getString("route_name"));
                 routeNames.add(jsonA.getJSONObject(i).getString("route_name"));
                // ma.adapter.add(routeNames[i]);
             }

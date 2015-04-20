@@ -30,15 +30,15 @@ public class getShuttleMax {
 
         try {
             URL obj = new URL(url);
-            System.out.println("url swag: " + obj.toString());
+            //System.out.println("url swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                System.out.println("CLOSE");
+                //System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
 
-            System.out.println("\nSending 'GET' request to URL : " + url);
+            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -52,7 +52,7 @@ public class getShuttleMax {
 
             //print result
             String answer = response.toString();
-            System.out.println("RESPONSE FROM SERVER MAXSHUTTLE: " + answer);
+            //System.out.println("RESPONSE FROM SERVER MAXSHUTTLE: " + answer);
 
             parse(answer);
 
@@ -68,7 +68,7 @@ public class getShuttleMax {
         size_json.add(array.getJSONObject(0).getString("max"));
         size = Integer.parseInt(size_json.get(0));
 
-        System.out.println("Size is " + size);
+        //System.out.println("Size is " + size);
         setShuttleSize(size);
     }
 
