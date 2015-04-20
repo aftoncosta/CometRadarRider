@@ -31,15 +31,15 @@ public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
 
         try {
             URL obj = new URL(url);
-            System.out.println("url swag: " + obj.toString());
+            //System.out.println("url swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                System.out.println("CLOSE");
+                //System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
 
-            System.out.println("\nSending 'GET' request to URL : " + url);
+            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -53,7 +53,7 @@ public class SetPickupSQL extends AsyncTask<Void, Void, String>  {
 
 
             //print result
-            System.out.println("RESPONSE FROM SERVER: " + response.toString());
+            //System.out.println("RESPONSE FROM SERVER: " + response.toString());
 
         }catch(Exception e){
             e.printStackTrace();

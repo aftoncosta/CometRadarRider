@@ -1,15 +1,28 @@
 package com.afton.cometradar;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.location.Location;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -19,8 +32,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
+
+import java.io.InputStream;
+
+import java.net.URL;
+import java.net.HttpURLConnection;
 import java.util.List;
-import java.util.Arrays;
+
 
 
 public class MapsActivity extends FragmentActivity {
@@ -30,11 +48,21 @@ public class MapsActivity extends FragmentActivity {
     public static String routeName = "";       // The name of the selected route
     public static boolean isOnDuty = false;
     public static boolean isFull = false;
+    public static String driverName = "";
+    public static String driverURL = "";
+    public static Drawable driverPic = null;
     LatLng cartLocation;    // Location of the cart
     LatLng userLocation;    // Location of user
+    public LatLng pickupLocation;
     String eta = "";        // The ETA of the cart to the user
     List <String> routeNames;
     protected ArrayAdapter<CharSequence> adapter;
+    Marker pickupMarker;
+    Polyline walkingRoute;
+    PopupWindow pickupPopUp;
+    boolean click = true;
+    LinearLayout mainLayout;
+    LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,31 +95,63 @@ public class MapsActivity extends FragmentActivity {
         pickUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            if (pickUpButton.getText().equals("Pick me up")) {
-                pickUpButton.setText("Cancel Pickup");
+                if (pickUpButton.getText().equals("Pick me up")) {
 
-                //Send to database
-                double pickupLat = userLocation.latitude;
-                double pickupLong = userLocation.longitude;
+                    TextView tv;
+                    LayoutParams params;
+                    Button but;
 
-                //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
-                new connectServer(pickupLat,pickupLong,true).execute();
-                //System.out.println("GETTING ROUTE STATUS 0");
+                    pickUpButton.setText("Cancel Pickup");
+                    System.out.println("PICKUP BUTTON: " + pickUpButton.getText());
+                    //Send to database
+                    double pickupLat = userLocation.latitude;
+                    double pickupLong = userLocation.longitude;
 
-                //new getRouteStatus().execute();
+                    //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
+                    new connectServer(pickupLat,pickupLong,true, MapsActivity.this).execute();
+                    //System.out.println("GETTING ROUTE STATUS 0");
 
+                    //new getRouteStatus().execute();
 
-            }
-            else
-                pickUpButton.setText("Pick me up");
+                    ImageView imageView = new ImageView(MapsActivity.this);
+                    System.out.println(driverPic);
+
+                    imageView.setImageDrawable(driverPic);
+                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 500);
+                    imageView.setLayoutParams(layoutParams);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setMessage("Your driver, " + driverName + ",\n is on the way!\n");
+                    builder.setCancelable(false);
+                    builder.setView(imageView);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    imageView.requestLayout();
+                    AlertDialog alert = builder.create();
+                    builder.setView(imageView);
+                    alert.show();
+
+                }
+                else {
+                    pickupLocation = null;
+                    pickupMarker.setVisible(false);
+                    walkingRoute.remove();
+                    pickUpButton.setText("Pick me up");
+                }
             }
         });
 
         // Handler for change in selected route
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 routeName = spinner.getSelectedItem().toString();
+                pickupLocation = null;
                 new GetRoute(MapsActivity.this).execute();
                 //new GetETA(MapsActivity.this).execute();
             }
@@ -146,7 +206,7 @@ public class MapsActivity extends FragmentActivity {
         // Initialize user location
         mMap.setMyLocationEnabled(true);
         Location location = mMap.getMyLocation();
-        userLocation = new LatLng(32.985700, -96.752514); // default location is center of campus
+        userLocation = new LatLng(32.986200, -96.752814); // default location is center of campus
         if (location != null) {
             userLocation = new LatLng(location.getLatitude(),
                     location.getLongitude());
@@ -209,7 +269,7 @@ public class MapsActivity extends FragmentActivity {
 
         // update user location
         Location location = mMap.getMyLocation();
-        userLocation = new LatLng(32.985700, -96.752514); // default location is center of campus
+        userLocation = new LatLng(32.986200, -96.752814); // default location is center of campus
 
         if (location != null) {
             userLocation = new LatLng(location.getLatitude(),
@@ -223,24 +283,30 @@ public class MapsActivity extends FragmentActivity {
         //////////// TODO: store "userLocation" as the rider's location for the route "routeName" ////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // updates current user location marker
-        mMap.addMarker(new MarkerOptions()
-                .position(userLocation)
-                .title("Pickup Location")
-                .icon(personIcon));
+        // updates current pickup location marker
+        if (pickupLocation != null) {
 
+            pickupMarker = mMap.addMarker(new MarkerOptions()
+                    .position(pickupLocation)
+                    .title("Your pickup Location")
+                    .icon(personIcon));
+
+            pickupMarker.setVisible(true);
+        } else {
+            pickupMarker = null;
+        }
         // updates cart marker
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(cartLocation.latitude, cartLocation.longitude))
                 .title(cartStatus)
                 .icon(cartImage));
 
-        System.out.println("CART LOCATION: " + cartLocation.latitude + ", " + cartLocation.longitude);
+        //System.out.println("CART LOCATION: " + cartLocation.latitude + ", " + cartLocation.longitude);
         return userLocation;
     }
 
     public String getRouteName() {
-        System.out.println("the route name should be " + routeName);
+        //System.out.println("the route name should be " + routeName);
         return routeName;
     }
 }
