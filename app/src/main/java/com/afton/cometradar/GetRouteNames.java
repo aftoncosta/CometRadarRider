@@ -2,8 +2,6 @@ package com.afton.cometradar;
 
 import android.os.AsyncTask;
 import android.os.Build;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -89,9 +87,5 @@ public class GetRouteNames extends AsyncTask<Void, Void, Void> {
         }catch (Exception e){
             e.printStackTrace();
         }
-        //ma.spinner.setAdapter(ma.adapter);
-        //ma.spinner.setSelection(0);
-        //ma.routeNames = routeNames;
-        //ma.routeName = routeNames.get(0);
     }
 }

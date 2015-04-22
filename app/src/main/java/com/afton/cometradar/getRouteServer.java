@@ -140,7 +140,6 @@ public class getRouteServer {
         try {
             Bitmap x;
 
-            System.out.println("DRIVER URL: " + driverURL);
             HttpURLConnection connection = (HttpURLConnection) new URL(driverURL).openConnection();
             connection.connect();
             java.io.InputStream input = connection.getInputStream();

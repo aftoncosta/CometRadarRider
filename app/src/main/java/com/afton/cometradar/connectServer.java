@@ -4,11 +4,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
@@ -33,7 +29,7 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
     double pickupLat;
     double pickupLong;
     boolean isPickup = false;
-    String ip = "10.0.2.2";
+    String ip = "104.197.3.201";
     MapsActivity ma;
 
     public connectServer(double a, double b, boolean c, MapsActivity _ma){
@@ -55,7 +51,7 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
 
     public void sendPickup(){
 
-        String url = "http://10.0.2.2:3000/pickup?route=" + ma.routeName + "&lat=" + pickupLat + "&lon=" + pickupLong;
+        String url = "http://" + ip + ":3000/pickup?route=" + ma.routeName + "&lat=" + pickupLat + "&lon=" + pickupLong;
         url = url.replace(" ", "%20");
 
         try {
@@ -66,9 +62,11 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             }
             con.setRequestMethod("GET");
 
+
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;
+
             StringBuffer response = new StringBuffer();
 
             while ((inputLine = in.readLine()) != null) {
@@ -83,7 +81,7 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             String lat = loc[0];
             lat = lat.substring(0, lat.length() - 1);
             String lon = loc[1];
-
+            System.out.println("PICKUP LOCATION: " + lat + ", " + lon);
             ma.pickupLocation = new LatLng(Double.parseDouble(lat), Double.parseDouble(lon));
 
         }catch(Exception e){
@@ -106,6 +104,7 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             }
             bis.close();
             jsonString = sb.toString();
+            System.out.println("JSON STRING: " + jsonString);
 
             return jsonString;
 

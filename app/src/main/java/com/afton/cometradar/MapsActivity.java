@@ -1,5 +1,8 @@
 package com.afton.cometradar;
 
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -8,18 +11,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.ImageView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.Marker;
@@ -33,10 +29,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 
-import java.io.InputStream;
-
-import java.net.URL;
-import java.net.HttpURLConnection;
 import java.util.List;
 
 
@@ -71,22 +63,7 @@ public class MapsActivity extends FragmentActivity {
         spinner = (Spinner)findViewById(R.id.spinner);
 
 
-        //new GetRouteNames(MapsActivity.this).execute();
-        adapter = ArrayAdapter.createFromResource(this, R.array.routes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this, spinner, new ArrayList(Arrays.asList(routeNames)));
-        //spinner.setAdapter(adapter);
-
         new GetRouteNames(MapsActivity.this).execute();
-
-        //System.out.println("ROUTENAME 0: " + routeNames[0]);
-        //for (String route : routeNames)
-            //adapter.add(route);
-
-       // spinner.setAdapter(adapter);
-        //routeName = routeNames[0];
-        //new GetRoute(MapsActivity.this).execute();
-
         setUpMapIfNeeded();
 
 
@@ -97,29 +74,18 @@ public class MapsActivity extends FragmentActivity {
             public void onClick(View view) {
                 if (pickUpButton.getText().equals("Pick me up")) {
 
-                    TextView tv;
-                    LayoutParams params;
-                    Button but;
-
                     pickUpButton.setText("Cancel Pickup");
-                    System.out.println("PICKUP BUTTON: " + pickUpButton.getText());
-                    //Send to database
                     double pickupLat = userLocation.latitude;
                     double pickupLong = userLocation.longitude;
 
-                    //System.out.print("LAT LONG TEST = " + pickupLat + pickupLong);
                     new connectServer(pickupLat,pickupLong,true, MapsActivity.this).execute();
-                    //System.out.println("GETTING ROUTE STATUS 0");
-
-                    //new getRouteStatus().execute();
 
                     ImageView imageView = new ImageView(MapsActivity.this);
-                    System.out.println(driverPic);
 
+                    imageView.setMinimumHeight(700);
+                    imageView.setMaxWidth(700);
                     imageView.setImageDrawable(driverPic);
-                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 500);
-                    imageView.setLayoutParams(layoutParams);
+                    imageView.setScaleType(ImageView.ScaleType.FIT_CENTER );
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
                     builder.setMessage("Your driver, " + driverName + ",\n is on the way!\n");
@@ -130,11 +96,9 @@ public class MapsActivity extends FragmentActivity {
                             dialog.dismiss();
                         }
                     });
-                    imageView.requestLayout();
-                    AlertDialog alert = builder.create();
-                    builder.setView(imageView);
-                    alert.show();
 
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
                 else {
                     pickupLocation = null;
@@ -153,7 +117,6 @@ public class MapsActivity extends FragmentActivity {
                 routeName = spinner.getSelectedItem().toString();
                 pickupLocation = null;
                 new GetRoute(MapsActivity.this).execute();
-                //new GetETA(MapsActivity.this).execute();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
@@ -213,13 +176,6 @@ public class MapsActivity extends FragmentActivity {
         }
 
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////// DATA TO BE SENT TO DB /////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////// TODO: store "userLocation" as the driver's location for the route "routeName" ///////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
         // Moves camera to current location
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 16));
 
@@ -236,23 +192,10 @@ public class MapsActivity extends FragmentActivity {
         BitmapDescriptor cartImage;
         String cartStatus;
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////// DATA TO BE GRABBED FROM DB ////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        // TODO: The String variable "routeName" has the name of the route... use this to grab from DB //
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-
         //This method will take care of is shuttle is on duty, or if its full:
         //Not sure if it updates when we change routes??
          new getRouteStatus().execute();
 
-         // is the cart on duty?
-
-        //Get the current capacity, and if grater than or equal to max then we are full
-          // is the cart full?
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         if (isOnDuty) {
@@ -276,13 +219,6 @@ public class MapsActivity extends FragmentActivity {
                     location.getLongitude());
         }
 
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////// DATA TO BE SENT TO DB /////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //////////// TODO: store "userLocation" as the rider's location for the route "routeName" ////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // updates current pickup location marker
         if (pickupLocation != null) {
 
@@ -301,12 +237,10 @@ public class MapsActivity extends FragmentActivity {
                 .title(cartStatus)
                 .icon(cartImage));
 
-        //System.out.println("CART LOCATION: " + cartLocation.latitude + ", " + cartLocation.longitude);
         return userLocation;
     }
 
     public String getRouteName() {
-        //System.out.println("the route name should be " + routeName);
         return routeName;
     }
 }
