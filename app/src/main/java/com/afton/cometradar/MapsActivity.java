@@ -3,6 +3,7 @@ package com.afton.cometradar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -29,7 +30,14 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 
 
@@ -56,16 +64,15 @@ public class MapsActivity extends FragmentActivity {
     LinearLayout mainLayout;
     LinearLayout layout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        spinner = (Spinner)findViewById(R.id.spinner);
 
+        new PopulateRoutesTask().execute();
 
-        new GetRouteNames(MapsActivity.this).execute();
         setUpMapIfNeeded();
-
 
         // Handler for pickup request
         final Button pickUpButton = (Button) findViewById(R.id.pickUpButton);
@@ -99,8 +106,7 @@ public class MapsActivity extends FragmentActivity {
 
                     AlertDialog alert = builder.create();
                     alert.show();
-                }
-                else {
+                } else {
                     pickupLocation = null;
                     pickupMarker.setVisible(false);
                     walkingRoute.remove();
@@ -108,21 +114,79 @@ public class MapsActivity extends FragmentActivity {
                 }
             }
         });
+    }
 
-        // Handler for change in selected route
-        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+    class PopulateRoutesTask extends AsyncTask<String, String, String> {
 
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                routeName = spinner.getSelectedItem().toString();
-                pickupLocation = null;
-                new GetRoute(MapsActivity.this).execute();
+        String jsonString = "";
+
+        public PopulateRoutesTask() {
+            super();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String getRoutes = "http://104.197.3.201:3000/route-names";
+            URL url = null;
+
+            try {
+                url = new URL(getRoutes);
+
+                BufferedInputStream bis = new BufferedInputStream(url.openStream());
+                byte[] buffer = new byte[1024];
+                StringBuilder sb = new StringBuilder();
+                int bytesRead = 0;
+                while((bytesRead = bis.read(buffer)) > 0) {
+                    String text = new String(buffer, 0, bytesRead);
+                    sb.append(text);
+                }
+                bis.close();
+                jsonString = sb.toString();
+
+                return jsonString;
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // May need this later...
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            JSONArray routesArray;
+            ArrayList<String> routes = new ArrayList<String>();
+
+            try {
+                routesArray = new JSONArray(jsonString);
+                for(int i = 0; i < routesArray.length(); i++){
+                    routes.add(routesArray.getJSONObject(i).getString("route_name"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        });
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, routes);
+
+            spinner = (Spinner)findViewById(R.id.spinner);
+            spinner.setAdapter(adapter);
+
+            // Handler for change in selected route
+            spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    routeName = spinner.getSelectedItem().toString();
+                    System.out.println("the route name should be " + routeName);
+
+                    new GetRoute(MapsActivity.this).execute();
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // May need this later...
+                }
+            });
+
+        }
     }
 
     @Override

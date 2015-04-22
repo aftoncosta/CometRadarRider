@@ -51,11 +51,15 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        catch (NullPointerException e1){
+            e1.printStackTrace();
+        }
         return null;
     }
 
     private URL getURL(){
         try {
+
             double originLat;
             double originLong;
 
@@ -67,16 +71,8 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
                 originLong = ma.userLocation.longitude;
                 ma.routeName = ma.spinner.getSelectedItem().toString();
             }
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////// DATA TO BE GRABBED FROM DB /////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-            // TODO: The String variable "ma.routeName" has the name of the route. Use this to grab from DB //
-            //////////////////////////////////////////////////////////////////////////////////////////////////
 
             ma.cartLocation = getCartLocation();//new LatLng(32.9855582, -96.7499986);
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////
 
             String url = "https://maps.googleapis.com/maps/api/directions/json?origin="
                     + originLat + ","
@@ -88,6 +84,9 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+        }
+        catch (NullPointerException e1) {
+            e1.printStackTrace();
         }
         return null;
     }
