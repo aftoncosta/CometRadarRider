@@ -226,7 +226,7 @@ public class MapsActivity extends FragmentActivity {
         // Initialize user location
         mMap.setMyLocationEnabled(true);
         Location location = mMap.getMyLocation();
-        userLocation = new LatLng(32.986200, -96.752814); // default location is center of campus
+        userLocation = new LatLng(32.985688, -96.750308); // default location is center of campus
         if (location != null) {
             userLocation = new LatLng(location.getLatitude(),
                     location.getLongitude());
@@ -234,7 +234,7 @@ public class MapsActivity extends FragmentActivity {
 
 
         // Moves camera to current location
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 16));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
 
         (new UpdateLocationsThread(MapsActivity.this)).start();
 
