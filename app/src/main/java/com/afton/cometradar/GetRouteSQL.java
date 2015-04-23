@@ -6,27 +6,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.spec.ECField;
-import java.sql.*;
+import java.util.*;
 
 import org.json.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.lang.String;
-import java.util.*;
 
 
 public class GetRouteSQL {
-    String url = "jdbc:mysql://69.195.124.139:3306/";
-    String dbName = "bsxpccom_cometradar";
-    String driver = "com.mysql.jdbc.Driver";
-    String userName = "bsxpccom_user2";
-    String password = "5Q$gP7jfxeO4";
-
     int dataSize = 0;
-    Integer[] order;
     String originLat = "";
     String originLong = "";
     String destLat = "";
@@ -36,8 +22,6 @@ public class GetRouteSQL {
     String ip = "104.197.3.201";
 
     public void getRouteData() {
-
-//System.out.println("EAR: " + MapsActivity.routeName);
 
         String temp = "SELECT  W.order,R.originLat, R.originLong, R.destLat, " +
                         "R.destLong, W.wp_lat, W.wp_long FROM routes AS R JOIN " +
@@ -50,15 +34,12 @@ public class GetRouteSQL {
 
         try {
             URL obj = new URL(url);
-           // System.out.println("url swag: " + obj.toString());
+
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-             //   System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
-
-           // System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -70,10 +51,7 @@ public class GetRouteSQL {
             }
             in.close();
 
-            //print result
             String answer = response.toString();
-           // System.out.println("RESPONSE FROM SERVER: " + answer);
-            //System.out.println("RESPONSE FROM SERVER: " + answer);
             parseData(answer);
 
         }catch(Exception e){

@@ -10,20 +10,14 @@ public class UpdateLocationsThread extends Thread{
         ma = _ma;
     }
     public void run() {
-        /* Uncomment this section when ready to test cart tracking
-            DO NOT uncomment until then. I accidentally left the emulator open with this running
-            and quickly used up my Google Directions API daily quota (2,500 calls)... so yeah.
-*/
-
-        while(true){
-            /*while (ma.routeName.equals("")){
-                System.out.println("wait");
-            }*/
-            new GetETA(ma).execute();
-            try {
-                this.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        while (true) {
+            if ( ma.routeName != null) {
+                new GetETA(ma).execute();
+                try {
+                    this.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

@@ -14,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import net.iharder.Base64.InputStream;
 
 public class getRouteServer {
 
@@ -34,15 +33,12 @@ public class getRouteServer {
 
         try {
             URL obj = new URL(url);
-            //System.out.println("url swag: " + obj.toString());
+
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                //System.out.println("CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
-
-            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -57,7 +53,6 @@ public class getRouteServer {
 
             //print result
             String answer = response.toString();
-            //System.out.println("RESPONSE FROM SERVER GETROUTES: " + answer);
 
             parseData(answer);
 
@@ -102,13 +97,9 @@ public class getRouteServer {
                 driverFName = driverFName_json.get(i);
                 driverLName = driverLName_json.get(i);
                 driverURL = "http://" + ip + ":3000/uploads/" + driverURL_json.get(i);
-                //System.out.println("URL: " + driverURL);
                 MapsActivity.driverURL = driverURL;
             }
         }
-
-       // System.out.println("Printing biatches");
-        //System.out.println(routeName +"   " + shuttleNo +"   " +  currentCapacity +"   " +  onDuty);
 
         setRoute(routeName);
         setShuttle(shuttleNo);
@@ -149,13 +140,11 @@ public class getRouteServer {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR");
             return;
         }
     }
 
     public void setDuty(int onDuty) {
-        //System.out.println("Duty is " + onDuty);
         if (onDuty == 0) //0 = false
             duty = false;
         else

@@ -51,6 +51,8 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
 
     public void sendPickup(){
 
+
+        ma.routeName = ma.spinner.getSelectedItem().toString();
         String url = "http://" + ip + ":3000/pickup?route=" + ma.routeName + "&lat=" + pickupLat + "&lon=" + pickupLong;
         url = url.replace(" ", "%20");
 
@@ -74,14 +76,10 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             }
             in.close();
 
-            System.out.println(response.toString());
-
             String[] loc = response.toString().split(",");
-            System.out.println(loc[0]);
             String lat = loc[0];
             lat = lat.substring(0, lat.length() - 1);
             String lon = loc[1];
-            System.out.println("PICKUP LOCATION: " + lat + ", " + lon);
             ma.pickupLocation = new LatLng(Double.parseDouble(lat), Double.parseDouble(lon));
 
         }catch(Exception e){
@@ -104,7 +102,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
             }
             bis.close();
             jsonString = sb.toString();
-            System.out.println("JSON STRING: " + jsonString);
 
             return jsonString;
 
@@ -119,7 +116,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
 
             ma.routeName = ma.spinner.getSelectedItem().toString();
 
-            //System.out.println("DIS BOY" + data.getOriginLat());
             double originLat = ma.userLocation.latitude;
             double originLong = ma.userLocation.longitude;
             double destinationLat = ma.pickupLocation.latitude;
@@ -135,8 +131,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
 
             url += "&sensor=false&key=AIzaSyB2T0ODhKgWpFWJEyBmDkaYqU0GNGm1HYE";
 
-            //System.out.println("SWAG = " + url);
-
             return new URL(url);
 
         } catch (MalformedURLException e) {
@@ -145,8 +139,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
         return null;
     }
 
-
-
     @Override
     protected void onPostExecute(String result){
         JSONObject jsonObject;
@@ -154,7 +146,6 @@ public class connectServer extends AsyncTask<Void, Void, String>  {
         JSONArray routesArray;
         try {
             //Grabbing the Polyline points String. This does pull the correct value.
-            //Parsing is correct.
             jsonObject = new JSONObject(jsonString);
             routesArray = jsonObject.getJSONArray("routes");
             JSONObject route = routesArray.getJSONObject(0);

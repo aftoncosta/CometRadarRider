@@ -6,19 +6,19 @@
 
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:id="@+id/spinner"
         android:entries="@array/routes"
         android:prompt="@string/choose_route"
         android:layout_gravity="center_horizontal"
         android:spinnerMode="dropdown"
-        android:clickable="true" />
+        android:clickable="true"
+        android:theme="@style/_RadarTheme."
+        style="@style/_RadarTheme." />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="fill_parent">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -27,18 +27,22 @@
             android:id="@+id/map"
             tools:context=".MapsActivity"
             android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_weight="0.67" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true" />
 
         <Button
             android:id="@+id/pickUpButton"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:text="@string/pickUpButtonText"
-            android:textSize="35sp"
-            android:background="#008542"
-            android:textColor="#fff"
-            android:layout_weight="0.43" />
+            android:textSize="30sp"
+            android:theme="@style/_RadarTheme."
+            style="@style/_RadarTheme."
+            android:height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

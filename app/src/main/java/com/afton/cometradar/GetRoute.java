@@ -8,7 +8,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
@@ -63,16 +62,9 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
 
             ma.routeName = ma.spinner.getSelectedItem().toString();
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////////////////////////////// DATA TO BE GRABBED FROM DB ///////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-            // TODO: The String variable "ma.routeName" has the name of the route... use this to grab from DB //
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-
             GetRouteSQL data = new GetRouteSQL();
             data.getRouteData();
 
-            //System.out.println("DIS BOY" + data.getOriginLat());
             double originLat = Double.parseDouble(data.getOriginLat());
             double originLong = Double.parseDouble(data.getOriginLong());
             double destinationLat = Double.parseDouble(data.getDestLat());
@@ -87,21 +79,10 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
                     temp1 = data.getWpLong();
 
 
-            //System.out.println("DATA SIZE" + data.getSize());
             for(int i = 0 ; i < data.getSize() ; i++) {
                 waypointsLat[i] = Double.parseDouble(temp[i]);
                 waypointsLong[i] = Double.parseDouble(temp1[i]);
-
-              //  System.out.println("WAYPOINTS LAT: " + waypointsLat[i]);
-              //  System.out.println("WAYPOINTS LON: " + waypointsLong[i]);
-
             }
-
-            //System.out.println("ALl data assigned");
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
 
             String url = "https://maps.googleapis.com/maps/api/directions/json?origin="
                     + originLat + ","
@@ -114,8 +95,6 @@ public class GetRoute extends AsyncTask<Void, Void, String> {
                 url += waypointsLat[i] + "," + waypointsLong[i] + "|";
 
             url += "&sensor=false&key=AIzaSyB2T0ODhKgWpFWJEyBmDkaYqU0GNGm1HYE";
-
-            //System.out.println("SWAG = " + url);
 
             return new URL(url);
 

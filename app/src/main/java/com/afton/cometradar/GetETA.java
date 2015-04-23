@@ -72,7 +72,7 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
                 ma.routeName = ma.spinner.getSelectedItem().toString();
             }
 
-            ma.cartLocation = getCartLocation();//new LatLng(32.9855582, -96.7499986);
+            ma.cartLocation = getCartLocation();
 
             String url = "https://maps.googleapis.com/maps/api/directions/json?origin="
                     + originLat + ","
@@ -118,20 +118,15 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
 
         String temp = "SELECT currentLat, currentLong FROM bsxpccom_cometradar.current_route WHERE route_name = '" + ma.routeName + "';";
         String query = temp.replace(" ", "%20");
-
         String url = "http://" + ip + ":3000/doQuery?string=" + query ;
 
         try {
             URL obj = new URL(url);
-            //System.out.println("url eta swag: " + obj.toString());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-                //System.out.println("eta CLOSE");
                 con.setRequestProperty("Connection", "close");
             }
             con.setRequestMethod("GET");
-
-            //System.out.println("\nSending 'GET' request to URL : " + url);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
@@ -143,16 +138,10 @@ public class GetETA extends AsyncTask<Void, Void, Void>{
             }
             in.close();
 
-            //print result
             String answer = response.toString();
             JSONArray jsonA = new JSONArray(answer);
-            //System.out.println(jsonA.toString());
             JSONObject jsonO = jsonA.getJSONObject(0);
-            //System.out.println(jsonO.toString());
 
-            //System.out.println("eta RESPONSE FROM SERVER: " + jsonO.getString("currentLat"));
-            //System.out.println("RESPONSE FROM SERVER: " + answer);
-            //parseData(answer);
             location = new LatLng(Double.parseDouble(jsonO.getString("currentLat")), Double.parseDouble(jsonO.getString("currentLong")));
 
         }catch(Exception e){

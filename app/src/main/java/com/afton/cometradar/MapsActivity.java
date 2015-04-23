@@ -11,8 +11,6 @@ import android.location.Location;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.ImageView;
 import android.widget.AdapterView;
@@ -34,7 +32,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,14 +52,10 @@ public class MapsActivity extends FragmentActivity {
     LatLng userLocation;    // Location of user
     public LatLng pickupLocation;
     String eta = "";        // The ETA of the cart to the user
-    List <String> routeNames;
     protected ArrayAdapter<CharSequence> adapter;
+    Marker cartMarker;
     Marker pickupMarker;
     Polyline walkingRoute;
-    PopupWindow pickupPopUp;
-    boolean click = true;
-    LinearLayout mainLayout;
-    LinearLayout layout;
 
 
     @Override
@@ -85,7 +78,7 @@ public class MapsActivity extends FragmentActivity {
                     double pickupLat = userLocation.latitude;
                     double pickupLong = userLocation.longitude;
 
-                    new connectServer(pickupLat,pickupLong,true, MapsActivity.this).execute();
+                    new connectServer(pickupLat, pickupLong, true, MapsActivity.this).execute();
 
                     ImageView imageView = new ImageView(MapsActivity.this);
 
@@ -95,7 +88,7 @@ public class MapsActivity extends FragmentActivity {
                     imageView.setScaleType(ImageView.ScaleType.FIT_CENTER );
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                    builder.setMessage("Your driver, " + driverName + ",\n is on the way!\n");
+                    builder.setMessage("Your driver, " + driverName + ", is on the way!\nETA: " + eta + "\n");
                     builder.setCancelable(false);
                     builder.setView(imageView);
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -108,8 +101,8 @@ public class MapsActivity extends FragmentActivity {
                     alert.show();
                 } else {
                     pickupLocation = null;
-                    pickupMarker.setVisible(false);
-                    walkingRoute.remove();
+                    if (walkingRoute != null)
+                        walkingRoute.remove();
                     pickUpButton.setText("Pick me up");
                 }
             }
@@ -295,11 +288,16 @@ public class MapsActivity extends FragmentActivity {
         } else {
             pickupMarker = null;
         }
+
         // updates cart marker
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(cartLocation.latitude, cartLocation.longitude))
-                .title(cartStatus)
-                .icon(cartImage));
+        if (cartLocation != null) {
+
+            cartMarker = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(cartLocation.latitude, cartLocation.longitude))
+                    .title(cartStatus)
+                    .icon(cartImage));
+
+        }
 
         return userLocation;
     }
